@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d0d;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+    }
+
+    .scene {
+      position: relative;
+      width: clamp(300px, 85vmin, 900px);
+      aspect-ratio: 1;
+    }
+
+    .scene > svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      overflow: visible;
+    }
+
+    .btn-dot {
+      cursor: pointer;
+      transform-box: fill-box;
+      transform-origin: center;
+      transition: transform 0.2s ease;
+    }
+    .btn-dot:hover { transform: scale(1.15); }
+
+    .info-label {
+      position: fixed;
+      color: #fff;
+      max-width: 300px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(5px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .info-label.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .info-label h3 {
+      font-size: clamp(11px, 1.8vmin, 18px);
+      font-weight: 500;
+      line-height: 1.3;
+      margin-bottom: 0.45em;
+    }
+    .info-label p {
+      font-size: clamp(9px, 1.2vmin, 13px);
+      color: #888;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+<div class="scene" id="scene">
+  <svg width="1311" height="1311" viewBox="0 0 1311 1311" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M242.891 242.891C309.139 176.644 415.209 162.373 533.505 193.336C651.761 224.288 781.928 300.389 895.904 414.365C1009.88 528.341 1085.98 658.508 1116.93 776.764C1147.9 895.06 1133.63 1001.13 1067.38 1067.38C1001.13 1133.63 895.06 1147.9 776.764 1116.93C658.508 1085.98 528.341 1009.88 414.365 895.904C300.389 781.928 224.288 651.761 193.336 533.505C162.373 415.209 176.644 309.139 242.891 242.891Z" stroke="url(#g0)" stroke-width="3"/>
+    <path d="M1067.38 242.891C1133.62 309.139 1147.9 415.209 1116.93 533.505C1085.98 651.761 1009.88 781.928 895.904 895.904C781.928 1009.88 651.761 1085.98 533.505 1116.93C415.208 1147.9 309.138 1133.63 242.891 1067.38C176.643 1001.13 162.373 895.06 193.335 776.764C224.287 658.508 300.388 528.341 414.364 414.365C528.34 300.389 658.507 224.288 776.763 193.336C895.06 162.373 1001.13 176.644 1067.38 242.891Z" stroke="url(#g1)" stroke-width="3"/>
+    <circle cx="655.135" cy="655.635" r="436" fill="url(#g2)"/>
+    <path d="M655.135 72.1348C748.823 72.1348 833.917 137.047 895.671 242.589C957.404 348.095 995.635 493.948 995.635 655.135C995.635 816.321 957.404 962.175 895.671 1067.68C833.917 1173.22 748.823 1238.13 655.135 1238.13C561.447 1238.13 476.353 1173.22 414.599 1067.68C352.866 962.175 314.635 816.321 314.635 655.135C314.635 493.948 352.866 348.095 414.599 242.589C476.353 137.047 561.447 72.1348 655.135 72.1348Z" stroke="url(#g3)" stroke-width="3"/>
+    <path d="M72.1348 655.135C72.1348 561.447 137.047 476.353 242.589 414.599C348.095 352.866 493.948 314.635 655.135 314.635C816.321 314.635 962.175 352.866 1067.68 414.599C1173.22 476.353 1238.13 561.447 1238.13 655.135C1238.13 748.823 1173.22 833.917 1067.68 895.671C962.175 957.404 816.321 995.635 655.135 995.635C493.948 995.635 348.095 957.404 242.589 895.671C137.047 833.917 72.1348 748.823 72.1348 655.135Z" stroke="url(#g4)" stroke-width="3"/>
+
+    <!-- top -->
+    <g class="btn-dot" data-i="0">
+      <circle cx="654.635" cy="70.1348" r="22.5" fill="#FF5300"/>
+      <path d="M655.487 72.5988H661.591V74.5028H655.487V80.6348H653.583V74.5028H647.479V72.5988H653.583V66.4668H655.487V72.5988Z" fill="white"/>
+    </g>
+    <!-- right -->
+    <g class="btn-dot" data-i="1">
+      <circle cx="1239.63" cy="655.135" r="22.5" fill="#FF5300"/>
+      <path d="M1240.49 657.599H1246.59V659.503H1240.49V665.635H1238.58V659.503H1232.48V657.599H1238.58V651.467H1240.49V657.599Z" fill="white"/>
+    </g>
+    <!-- left -->
+    <g class="btn-dot" data-i="2">
+      <circle cx="70.6348" cy="655.135" r="22.5" fill="#FF5300"/>
+      <path d="M71.4868 657.599H77.5908V659.503H71.4868V665.635H69.5828V659.503H63.4788V657.599H69.5828V651.467H71.4868V657.599Z" fill="white"/>
+    </g>
+    <!-- bottom -->
+    <g class="btn-dot" data-i="3">
+      <circle cx="654.635" cy="1239.13" r="22.5" fill="#FF5300"/>
+      <path d="M655.487 1241.6H661.591V1243.5H655.487V1249.63H653.583V1243.5H647.479V1241.6H653.583V1235.47H655.487V1241.6Z" fill="white"/>
+    </g>
+    <!-- bottom-left -->
+    <g class="btn-dot" data-i="4">
+      <circle cx="228.635" cy="1048.13" r="22.5" fill="#FF5300"/>
+      <path d="M229.487 1050.6H235.591V1052.5H229.487V1058.63H227.583V1052.5H221.479V1050.6H227.583V1044.47H229.487V1050.6Z" fill="white"/>
+    </g>
+    <!-- top-right -->
+    <g class="btn-dot" data-i="5">
+      <circle cx="1081.63" cy="262.135" r="22.5" fill="#FF5300"/>
+      <path d="M1082.49 264.599H1088.59V266.503H1082.49V272.635H1080.58V266.503H1074.48V264.599H1080.58V258.467H1082.49V264.599Z" fill="white"/>
+    </g>
+
+    <defs>
+      <radialGradient id="g0" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(655.488 655.488) rotate(45) scale(584 479.619)">
+        <stop stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0.05"/>
+      </radialGradient>
+      <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(654.78 655.488) rotate(135) scale(584 479.619)">
+        <stop stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0.05"/>
+      </radialGradient>
+      <radialGradient id="g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(459.635 326.135) rotate(61.4528) scale(795.174)">
+        <stop stop-color="#FFA102"/>
+        <stop offset="0.441598" stop-color="#FE1D04"/>
+        <stop offset="0.672216" stop-color="#D31803"/>
+        <stop offset="1"/>
+      </radialGradient>
+      <radialGradient id="g3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(655.135 655.635) rotate(90) scale(584 479.619)">
+        <stop stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0.05"/>
+      </radialGradient>
+      <radialGradient id="g4" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(655.635 655.135) scale(584 479.619)">
+        <stop stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0.05"/>
+      </radialGradient>
+    </defs>
+  </svg>
+
+  <!-- Labels — replace text content as needed -->
+  <div class="info-label" data-i="0">
+    <h3>International Arbitration</h3>
+    <p>Representing clients in ICC, DIAC, and LCIA proceedings. Cross-border commercial disputes and enforcement of awards.</p>
+  </div>
+  <div class="info-label" data-i="1">
+    <h3>Dispute Resolution</h3>
+    <p>Litigation and negotiation across UAE courts and international forums.</p>
+  </div>
+  <div class="info-label" data-i="2">
+    <h3>Tax Advisory</h3>
+    <p>VAT compliance, tax structuring, and advisory for businesses in the UAE and Gulf region.</p>
+  </div>
+  <div class="info-label" data-i="3">
+    <h3>Employment Law</h3>
+    <p>Employment contracts, termination disputes, and HR compliance under UAE Labour Law.</p>
+  </div>
+  <div class="info-label" data-i="4">
+    <h3>Banking & Finance</h3>
+    <p>Loan agreements, security documentation, and regulatory matters for banks and financial institutions.</p>
+  </div>
+  <div class="info-label" data-i="5">
+    <h3>Corporate Law & Structuring</h3>
+    <p>Setting up and restructuring companies, holding structures, and funds in the UAE and other jurisdictions. Corporate governance, shareholder agreements, M&A support.</p>
+  </div>
+</div>
+
+<script>
+  // SVG viewBox size and circle radius (in SVG units)
+  const VBOX  = 1311;
+  const R_DOT = 22.5;
+  const GAP   = 20; // px gap between circle edge and label
+
+  // For each button: its SVG center coords and which horizontal side the label goes
+  // side 'right' → label to the right of button
+  // side 'left'  → label to the left of button (right-aligned)
+  const BTN_DATA = [
+    { i: 0, cx: 654.635, cy:  70.135, side: 'left'  }, // top (center)
+    { i: 1, cx: 1239.63, cy: 655.135, side: 'right' }, // right  → text right
+    { i: 2, cx:  70.635, cy: 655.135, side: 'left'  }, // left   → text left
+    { i: 3, cx: 654.635, cy: 1239.13, side: 'left'  }, // bottom (center)
+    { i: 4, cx: 228.635, cy: 1048.13, side: 'left'  }, // bottom-left → text left
+    { i: 5, cx: 1081.63, cy: 262.135, side: 'right' }, // top-right  → text right
+  ];
+
+  function placeLabels() {
+    const scene = document.getElementById('scene');
+    const rect  = scene.getBoundingClientRect();
+    const size  = rect.width;
+    const scale = size / VBOX;
+
+    BTN_DATA.forEach(({ i, cx, cy, side }) => {
+      const label = document.querySelector(`.info-label[data-i="${i}"]`);
+
+      // Button center in VIEWPORT coordinates (matches position:fixed reference)
+      const vx = rect.left + cx * scale;
+      const vy = rect.top  + cy * scale;
+      const r  = R_DOT * scale;
+
+      label.style.left  = '';
+      label.style.right = '';
+      if (side === 'right') {
+        label.style.left      = (vx + r + GAP) + 'px';
+        label.style.textAlign = 'left';
+      } else {
+        // anchor right edge of label to the left side of the button
+        label.style.right     = (window.innerWidth - (vx - r - GAP)) + 'px';
+        label.style.textAlign = 'right';
+      }
+
+      label.style.top    = '';
+      label.style.bottom = '';
+      if (vy <= rect.top + size / 2) {
+        label.style.top = (vy - r) + 'px';
+      } else {
+        label.style.bottom = (window.innerHeight - vy - r) + 'px';
+      }
+    });
+  }
+
+  // Click interaction
+  const allLabels = [...document.querySelectorAll('.info-label')];
+  const allBtns   = [...document.querySelectorAll('.btn-dot')];
+
+  allBtns.forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const label    = document.querySelector(`.info-label[data-i="${btn.dataset.i}"]`);
+      const wasActive = label.classList.contains('active');
+
+      allLabels.forEach(l => l.classList.remove('active'));
+      allBtns.forEach(b => b.classList.remove('active'));
+
+      if (!wasActive) {
+        label.classList.add('active');
+        btn.classList.add('active');
+      }
+    });
+  });
+
+  document.addEventListener('click', () => {
+    allLabels.forEach(l => l.classList.remove('active'));
+    allBtns.forEach(b => b.classList.remove('active'));
+  });
+
+  placeLabels();
+  window.addEventListener('resize', placeLabels);
+  window.addEventListener('scroll', placeLabels);
+</script>
+</body>
+</html>
