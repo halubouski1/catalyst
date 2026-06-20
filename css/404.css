@@ -1,0 +1,156 @@
+.err__inner {
+  padding-bottom: 230px;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.err-fours {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 610px;
+  align-items: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.err-four {
+  font-weight: 400;
+  font-size: 500px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.err-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 1166px;
+  margin: 0 auto;
+}
+
+.err-left {
+  display: flex;
+  align-items: flex-end;
+  gap: 78px;
+}
+
+.err-label {
+  font-weight: 400;
+  font-size: 65px;
+  line-height: 85%;
+  letter-spacing: -0.03em;
+  text-align: right;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.err-desc {
+  max-width: 376px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 135%;
+  color: #fff;
+}
+
+.err__btn {
+  gap: 40px;
+}
+
+@media (max-width: 1919px) {
+  .err-four {
+    font-size: 400px;
+  }
+
+  .err-fours {
+    gap: 500px;
+  }
+
+  .err__inner {
+  padding-bottom: 130px;
+  } 
+
+  .err-label {
+    font-size: 50px;
+  }
+
+  .err-desc {
+    max-width: 299px;
+    font-size: 13px;
+  }
+
+  .err-left {
+    gap: 50px;
+  }
+
+  .err__btn {
+    padding-left: 30px;
+    gap: 30px;
+  }
+
+  .err-bottom {
+    max-width: 930px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .err-fours {
+    gap: 300px;
+  }
+
+  .err-bottom {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 800px) {
+  .err-fours {
+    gap: 200px;
+  }
+
+  .err-four {
+    font-size: 300px;
+  }
+
+  .err__inner {
+    padding-bottom: 50px;
+  }
+
+  .err-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .err-left {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .err-desc {
+    text-align: center;
+  }
+}
+
+@media (max-width: 570px) {
+  .hero::after {
+    display: none;
+  }
+
+  .err-fours {
+    gap: 80px;
+  }
+
+  .err-four {
+    font-size: 200px;
+  }
+}
