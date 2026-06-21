@@ -145,88 +145,89 @@ if (document.getElementById('scene')) {
     const newBtn   = document.querySelector(`.btn-dot[data-i="${iStr}"]`);
     if (!newLabel) return;
 
-    const toggling = curLabel === newLabel;
+    const dblRaf = (fn) => requestAnimationFrame(() => requestAnimationFrame(fn));
 
-    if (toggling) {
-      panel.style.height = panel.offsetHeight + 'px';
-      curLabel.style.transition = 'opacity 0.25s ease';
-      curLabel.style.opacity    = '0';
+    const panelDone = (fn) => {
+      const handler = (e) => {
+        if (e.propertyName !== 'height') return;
+        panel.removeEventListener('transitionend', handler);
+        fn();
+      };
+      panel.addEventListener('transitionend', handler);
+    };
+
+    // Close same label
+    if (curLabel === newLabel) {
+      const fromH = panel.offsetHeight;
+      panel.style.transition = '';
+      panel.style.height = fromH + 'px';
+      curLabel.style.opacity = '0';
       if (curBtn) curBtn.classList.remove('active');
-
-      setTimeout(() => {
-        curLabel.classList.remove('active');
-        curLabel.style.transition = '';
-        curLabel.style.opacity    = '';
+      dblRaf(() => {
         panel.style.transition = 'height 0.35s ease';
-        panel.style.height     = '0px';
-        setTimeout(() => {
-          panel.style.transition = '';
-          panel.style.height     = '';
-        }, 350);
-      }, 260);
-      return;
-    }
-
-    if (!curLabel) {
-      newLabel.style.display    = 'block';
-      newLabel.style.opacity    = '0';
-      newLabel.style.transition = 'none';
-      newLabel.classList.add('active');
-      if (newBtn) newBtn.classList.add('active');
-
-      const newH = newLabel.scrollHeight;
-      panel.style.height = '0px';
-
-      requestAnimationFrame(() => {
-        panel.style.transition    = 'height 0.35s ease';
-        panel.style.height        = newH + 'px';
-        newLabel.style.transition = 'opacity 0.3s ease';
-        newLabel.style.opacity    = '1';
-
-        setTimeout(() => {
-          newLabel.style.display    = '';
-          newLabel.style.opacity    = '';
-          newLabel.style.transition = '';
-          panel.style.transition    = '';
-          panel.style.height        = '';
-        }, 350);
+        panel.style.height = '0px';
+      });
+      panelDone(() => {
+        curLabel.classList.remove('active');
+        curLabel.style.opacity = '';
+        panel.style.transition = '';
+        panel.style.height = '';
       });
       return;
     }
 
-    panel.style.height   = panel.offsetHeight + 'px';
-    curLabel.style.transition = 'opacity 0.25s ease';
-    curLabel.style.opacity    = '0';
+    if (newBtn) newBtn.classList.add('active');
+
+    // Open first label (nothing was active)
+    if (!curLabel) {
+      const targetH = newLabel.scrollHeight;
+      panel.style.transition = '';
+      panel.style.height = '0px';
+      newLabel.classList.add('active');
+      newLabel.style.opacity = '0';
+      dblRaf(() => {
+        panel.style.transition = 'height 0.35s ease';
+        panel.style.height = targetH + 'px';
+        newLabel.style.transition = 'opacity 0.28s ease 0.08s';
+        newLabel.style.opacity = '1';
+      });
+      panelDone(() => {
+        panel.style.transition = '';
+        panel.style.height = '';
+        newLabel.style.transition = '';
+        newLabel.style.opacity = '';
+      });
+      return;
+    }
+
+    // Switch from one label to another
+    const fromH = panel.offsetHeight;
     if (curBtn) curBtn.classList.remove('active');
+    curLabel.style.opacity = '0';
 
     setTimeout(() => {
       curLabel.classList.remove('active');
-      curLabel.style.transition = '';
-      curLabel.style.opacity    = '';
+      curLabel.style.opacity = '';
 
-      newLabel.style.display    = 'block';
-      newLabel.style.opacity    = '0';
-      newLabel.style.transition = 'none';
+      const targetH = newLabel.scrollHeight;
+      panel.style.transition = '';
+      panel.style.height = fromH + 'px';
       newLabel.classList.add('active');
-      if (newBtn) newBtn.classList.add('active');
+      newLabel.style.opacity = '0';
 
-      const newH = newLabel.scrollHeight;
-
-      requestAnimationFrame(() => {
-        panel.style.transition    = 'height 0.35s ease';
-        panel.style.height        = newH + 'px';
-        newLabel.style.transition = 'opacity 0.3s ease';
-        newLabel.style.opacity    = '1';
-
-        setTimeout(() => {
-          newLabel.style.display    = '';
-          newLabel.style.opacity    = '';
-          newLabel.style.transition = '';
-          panel.style.transition    = '';
-          panel.style.height        = '';
-        }, 350);
+      dblRaf(() => {
+        panel.style.transition = 'height 0.35s ease';
+        panel.style.height = targetH + 'px';
+        newLabel.style.transition = 'opacity 0.28s ease';
+        newLabel.style.opacity = '1';
       });
-    }, 260);
+      panelDone(() => {
+        panel.style.transition = '';
+        panel.style.height = '';
+        newLabel.style.transition = '';
+        newLabel.style.opacity = '';
+      });
+    }, 200);
   }
 
   allBtns.forEach(btn => {
