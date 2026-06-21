@@ -527,6 +527,7 @@
     padding-left: 36px;
     padding-right: 36px;
     overflow: hidden;
+    will-change: height;
   }
 
   .info-label {

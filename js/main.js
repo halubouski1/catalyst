@@ -152,8 +152,23 @@ if (document.getElementById('scene')) {
   const allLabels = [...document.querySelectorAll('.info-label')];
   const allBtns   = [...document.querySelectorAll('.btn-dot')];
 
+  // Pre-cache label heights to avoid reflows on each tap
+  const mobileH = new Map();
+  let mobilePanelH = 0;
+
+  function buildHeightCache() {
+    if (window.innerWidth > 1024) return;
+    mobileH.clear();
+    allLabels.forEach(label => {
+      const h = label.scrollHeight;
+      if (h > 0) mobileH.set(label, h);
+    });
+  }
+  buildHeightCache();
+  window.addEventListener('resize', buildHeightCache);
+
   function mobileSwitchLabel(iStr) {
-    const panel    = document.querySelector('.what-we-do__label-panel');
+    const panel = document.querySelector('.what-we-do__label-panel');
     if (!panel) return;
 
     const curLabel = allLabels.find(l => l.classList.contains('active'));
@@ -173,13 +188,13 @@ if (document.getElementById('scene')) {
       panel.addEventListener('transitionend', handler);
     };
 
+    allBtns.forEach(b => b.classList.remove('active'));
+
     // Close same label
     if (curLabel === newLabel) {
-      const fromH = panel.offsetHeight;
       panel.style.transition = '';
-      panel.style.height = fromH + 'px';
+      panel.style.height = mobilePanelH + 'px';
       curLabel.style.opacity = '0';
-      if (curBtn) curBtn.classList.remove('active');
       dblRaf(() => {
         panel.style.transition = 'height 0.35s ease';
         panel.style.height = '0px';
@@ -189,15 +204,16 @@ if (document.getElementById('scene')) {
         curLabel.style.opacity = '';
         panel.style.transition = '';
         panel.style.height = '';
+        mobilePanelH = 0;
       });
       return;
     }
 
     if (newBtn) newBtn.classList.add('active');
+    const targetH = mobileH.get(newLabel) || newLabel.scrollHeight;
 
     // Open first label (nothing was active)
     if (!curLabel) {
-      const targetH = newLabel.scrollHeight;
       panel.style.transition = '';
       panel.style.height = '0px';
       newLabel.classList.add('active');
@@ -213,25 +229,22 @@ if (document.getElementById('scene')) {
         panel.style.height = '';
         newLabel.style.transition = '';
         newLabel.style.opacity = '';
+        mobilePanelH = targetH;
       });
       return;
     }
 
     // Switch from one label to another
-    const fromH = panel.offsetHeight;
-    if (curBtn) curBtn.classList.remove('active');
+    const fromH = mobilePanelH;
     curLabel.style.opacity = '0';
 
     setTimeout(() => {
       curLabel.classList.remove('active');
       curLabel.style.opacity = '';
-
-      const targetH = newLabel.scrollHeight;
       panel.style.transition = '';
       panel.style.height = fromH + 'px';
       newLabel.classList.add('active');
       newLabel.style.opacity = '0';
-
       dblRaf(() => {
         panel.style.transition = 'height 0.35s ease';
         panel.style.height = targetH + 'px';
@@ -243,8 +256,9 @@ if (document.getElementById('scene')) {
         panel.style.height = '';
         newLabel.style.transition = '';
         newLabel.style.opacity = '';
+        mobilePanelH = targetH;
       });
-    }, 200);
+    }, 180);
   }
 
   allBtns.forEach(btn => {
