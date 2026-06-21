@@ -167,48 +167,57 @@ if (document.getElementById('scene')) {
   buildHeightCache();
   window.addEventListener('resize', buildHeightCache);
 
+  const dblRaf = (fn) => requestAnimationFrame(() => requestAnimationFrame(fn));
+
+  const panelDone = (panel, fn) => {
+    const handler = (e) => {
+      if (e.propertyName !== 'height') return;
+      panel.removeEventListener('transitionend', handler);
+      fn();
+    };
+    panel.addEventListener('transitionend', handler);
+  };
+
+  // Smoothly collapse the open label (used on tap-outside and tap-same-dot)
+  function mobileCollapse() {
+    const panel = document.querySelector('.what-we-do__label-panel');
+    if (!panel) return;
+    const curLabel = allLabels.find(l => l.classList.contains('active'));
+    allBtns.forEach(b => b.classList.remove('active'));
+    if (!curLabel) return;
+
+    panel.style.transition = '';
+    panel.style.height = mobilePanelH + 'px';
+    curLabel.style.opacity = '0';
+    dblRaf(() => {
+      panel.style.transition = 'height 0.35s ease';
+      panel.style.height = '0px';
+    });
+    panelDone(panel, () => {
+      curLabel.classList.remove('active');
+      curLabel.style.opacity = '';
+      panel.style.transition = '';
+      panel.style.height = '';
+      mobilePanelH = 0;
+    });
+  }
+
   function mobileSwitchLabel(iStr) {
     const panel = document.querySelector('.what-we-do__label-panel');
     if (!panel) return;
 
     const curLabel = allLabels.find(l => l.classList.contains('active'));
-    const curBtn   = allBtns.find(b => b.classList.contains('active'));
     const newLabel = document.querySelector(`.info-label[data-i="${iStr}"]`);
     const newBtn   = document.querySelector(`.btn-dot[data-i="${iStr}"]`);
     if (!newLabel) return;
 
-    const dblRaf = (fn) => requestAnimationFrame(() => requestAnimationFrame(fn));
-
-    const panelDone = (fn) => {
-      const handler = (e) => {
-        if (e.propertyName !== 'height') return;
-        panel.removeEventListener('transitionend', handler);
-        fn();
-      };
-      panel.addEventListener('transitionend', handler);
-    };
-
-    allBtns.forEach(b => b.classList.remove('active'));
-
     // Close same label
     if (curLabel === newLabel) {
-      panel.style.transition = '';
-      panel.style.height = mobilePanelH + 'px';
-      curLabel.style.opacity = '0';
-      dblRaf(() => {
-        panel.style.transition = 'height 0.35s ease';
-        panel.style.height = '0px';
-      });
-      panelDone(() => {
-        curLabel.classList.remove('active');
-        curLabel.style.opacity = '';
-        panel.style.transition = '';
-        panel.style.height = '';
-        mobilePanelH = 0;
-      });
+      mobileCollapse();
       return;
     }
 
+    allBtns.forEach(b => b.classList.remove('active'));
     if (newBtn) newBtn.classList.add('active');
     const targetH = mobileH.get(newLabel) || newLabel.scrollHeight;
 
@@ -224,7 +233,7 @@ if (document.getElementById('scene')) {
         newLabel.style.transition = 'opacity 0.28s ease 0.08s';
         newLabel.style.opacity = '1';
       });
-      panelDone(() => {
+      panelDone(panel, () => {
         panel.style.transition = '';
         panel.style.height = '';
         newLabel.style.transition = '';
@@ -251,7 +260,7 @@ if (document.getElementById('scene')) {
         newLabel.style.transition = 'opacity 0.28s ease';
         newLabel.style.opacity = '1';
       });
-      panelDone(() => {
+      panelDone(panel, () => {
         panel.style.transition = '';
         panel.style.height = '';
         newLabel.style.transition = '';
@@ -282,6 +291,10 @@ if (document.getElementById('scene')) {
   });
 
   document.addEventListener('click', () => {
+    if (window.innerWidth <= 1024) {
+      mobileCollapse();
+      return;
+    }
     allLabels.forEach(l => l.classList.remove('active'));
     allBtns.forEach(b => b.classList.remove('active'));
   });
@@ -297,6 +310,11 @@ if (document.getElementById('scene')) {
     const btn   = document.querySelector(`.btn-dot[data-i="${index}"]`);
     if (label) label.classList.add('active');
     if (btn)   btn.classList.add('active');
+    // On mobile the panel opens instantly here, so keep mobilePanelH in sync
+    // with the open label — otherwise the first tap animates from 0 (jump).
+    if (window.innerWidth <= 1024 && label) {
+      mobilePanelH = mobileH.get(label) || label.scrollHeight;
+    }
   }
 
   const whatWeDo = document.querySelector('.what-we-do');
