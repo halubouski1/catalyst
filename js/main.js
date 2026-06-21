@@ -17,6 +17,9 @@ function closeNavMenu() {
 
 burger.addEventListener('click', openNavMenu);
 navMenuClose.addEventListener('click', closeNavMenu);
+document.querySelectorAll('.nav-menu__item').forEach(link => {
+  link.addEventListener('click', closeNavMenu);
+});
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && navMenu.classList.contains('active')) closeNavMenu();
 });
@@ -73,6 +76,20 @@ function lenisRaf(time) {
   requestAnimationFrame(lenisRaf);
 }
 requestAnimationFrame(lenisRaf);
+
+// ========================================
+// Anchor scroll via Lenis
+// ========================================
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const hash = link.getAttribute('href');
+    if (!hash || hash === '#') return;
+    const target = document.querySelector(hash);
+    if (!target) return;
+    e.preventDefault();
+    lenis.scrollTo(target, { duration: 1.4, offset: 0 });
+  });
+});
 
 // ========================================
 // AOS init

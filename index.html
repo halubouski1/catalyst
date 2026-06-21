@@ -29,7 +29,7 @@
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="hero">
   <video class="hero__video" autoplay muted loop playsinline>
     <source src="assets/vid/hero-mobile.mp4" media="(max-width: 570px)">
     <source src="assets/vid/hero.mp4">
@@ -40,10 +40,10 @@
     <div></div>
 
     <nav class="hero__nav">
-      <a class="hero__nav-link" href="#">HOME</a>
-      <a class="hero__nav-link" href="#">CONTACTS</a>
-      <a class="hero__nav-link" href="#">ROAD MAP</a>
-      <a class="hero__nav-link" href="#">TEAM</a>
+      <a class="hero__nav-link" href="#hero">HOME</a>
+      <a class="hero__nav-link" href="#contacts">CONTACTS</a>
+      <a class="hero__nav-link" href="#what-we-do">WHAT WE DO</a>
+      <a class="hero__nav-link" href="#team">TEAM</a>
     </nav>
 
     <div class="hero__bottom">
@@ -65,7 +65,7 @@
   </div>
 </section>
 
-<section class="about">
+<section class="about" id="about">
 
   <p class="about__lead" data-aos="fade-up" data-aos-duration="900">We are a boutique advisory firm focused on complex, cross-functional projects. Our expertise covers corporate law, international tax planning, sanctions compliance, and reputation management.</p>
 
@@ -81,7 +81,7 @@
 
 </section>
 
-<section class="work">
+<section class="work" id="work">
 
   <div class="work__header">
     <h2 class="work__title" data-aos="fade-up" data-aos-duration="900"><span class="work__title-accent">\\ Who We</span> Work With</h2>
@@ -180,7 +180,7 @@
 
 </section>
 
-<section class="what-we-do">
+<section class="what-we-do" id="what-we-do">
 
   <h2 class="what-we-do__title" data-aos="fade-up" data-aos-duration="900"><span class="what-we-do__accent">\\ What</span> We Do</h2>
 
@@ -283,7 +283,7 @@
 
 </section>
 
-<section class="team">
+<section class="team" id="team">
 
   <div class="team__header" data-aos="fade-up" data-aos-duration="900">
     <h2 class="team__title"><span class="team__title-light">Who You'll</span> Work With</h2>
@@ -373,7 +373,7 @@
 
 </section>
 
-<section class="cta">
+<section class="cta" id="contacts">
   <video class="cta__video" src="./assets/vid/cta.mp4" autoplay muted loop playsinline></video>
 
   <div class="cta__inner">
@@ -421,10 +421,10 @@
         <img src="assets/img/logo.svg" alt="Catalyst">
       </a>
       <nav class="footer__nav">
-        <a href="#" class="footer__nav-link">Why Choose Us</a>
-        <a href="#" class="footer__nav-link">Home</a>
-        <a href="#" class="footer__nav-link">Our Story</a>
-        <a href="#" class="footer__nav-link">Contacts</a>
+        <a href="#team" class="footer__nav-link">Our Team</a>
+        <a href="#hero" class="footer__nav-link">Home</a>
+        <a href="#about" class="footer__nav-link">Our Story</a>
+        <a href="#contacts" class="footer__nav-link">Contacts</a>
       </nav>
       <div class="footer__socials">
         <a href="#" class="footer__social">
@@ -519,39 +519,39 @@
     </div>
 
     <nav class="nav-menu__nav">
-      <a href="#" class="nav-menu__item">
+      <a href="#hero" class="nav-menu__item">
         <span class="nav-menu__num">01</span>
         <span class="nav-menu__item-right">
           <svg class="nav-menu__item-arrow" width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.4764 15.7055L0.190557 15.7775L2.03154e-05 12.1943L22.2845 12.1211L11.9537 2.54236L14.4082 -5.71818e-05L29.3903 13.8913L15.8904 27.8746L13.1664 25.3489L22.4764 15.7055Z" fill="white"/></svg>
           <span class="nav-menu__item-text">Home</span>
         </span>
       </a>
-      <a href="#" class="nav-menu__item">
+      <a href="#about" class="nav-menu__item">
         <span class="nav-menu__num">02</span>
         <span class="nav-menu__item-right">
           <svg class="nav-menu__item-arrow" width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.4764 15.7055L0.190557 15.7775L2.03154e-05 12.1943L22.2845 12.1211L11.9537 2.54236L14.4082 -5.71818e-05L29.3903 13.8913L15.8904 27.8746L13.1664 25.3489L22.4764 15.7055Z" fill="white"/></svg>
           <span class="nav-menu__item-text">Our Story</span>
         </span>
       </a>
-      <a href="#" class="nav-menu__item">
+      <a href="#contacts" class="nav-menu__item">
         <span class="nav-menu__num">03</span>
         <span class="nav-menu__item-right">
           <svg class="nav-menu__item-arrow" width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.4764 15.7055L0.190557 15.7775L2.03154e-05 12.1943L22.2845 12.1211L11.9537 2.54236L14.4082 -5.71818e-05L29.3903 13.8913L15.8904 27.8746L13.1664 25.3489L22.4764 15.7055Z" fill="white"/></svg>
           <span class="nav-menu__item-text">Contacts</span>
         </span>
       </a>
-      <a href="#" class="nav-menu__item">
+      <a href="#what-we-do" class="nav-menu__item">
         <span class="nav-menu__num">04</span>
         <span class="nav-menu__item-right">
           <svg class="nav-menu__item-arrow" width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.4764 15.7055L0.190557 15.7775L2.03154e-05 12.1943L22.2845 12.1211L11.9537 2.54236L14.4082 -5.71818e-05L29.3903 13.8913L15.8904 27.8746L13.1664 25.3489L22.4764 15.7055Z" fill="white"/></svg>
           <span class="nav-menu__item-text">What We Do</span>
         </span>
       </a>
-      <a href="#" class="nav-menu__item">
+      <a href="#work" class="nav-menu__item">
         <span class="nav-menu__num">05</span>
         <span class="nav-menu__item-right">
           <svg class="nav-menu__item-arrow" width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.4764 15.7055L0.190557 15.7775L2.03154e-05 12.1943L22.2845 12.1211L11.9537 2.54236L14.4082 -5.71818e-05L29.3903 13.8913L15.8904 27.8746L13.1664 25.3489L22.4764 15.7055Z" fill="white"/></svg>
-          <span class="nav-menu__item-text">Trusted Partners</span>
+          <span class="nav-menu__item-text">Who We Work With</span>
         </span>
       </a>
     </nav>
