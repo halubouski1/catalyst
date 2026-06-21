@@ -521,7 +521,22 @@
         padding-left: 0px;
     }
 
+    /* Decorative blurred glows re-rasterize every frame whenever their section
+       moves/resizes (e.g. the what-we-do panel height animation pushes the
+       sections below). The radial-gradients are already soft, so dropping the
+       live blur looks the same but removes the per-frame GPU cost on mobile. */
+    .about::before,
+    .work::before,
+    .what-we-do::before,
+    .team::before {
+        filter: none;
+    }
+
     /* what-we-do */
+    .what-we-do {
+        contain: layout paint;
+    }
+
       .what-we-do__label-panel {
     width: 100%;
     padding-left: 36px;
@@ -569,6 +584,10 @@
   .team-card__profile-btn {
     bottom: 20px;
     left: 20px;
+  }
+
+  .team::before {
+    display: none;
   }
 
   /* cta */
