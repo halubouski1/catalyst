@@ -522,11 +522,6 @@ button {
   z-index: 0;
 }
 
-.what-we-do > * {
-  position: relative;
-  z-index: 1;
-}
-
 .what-we-do::after {
   content: '';
   position: absolute;
