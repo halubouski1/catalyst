@@ -1077,19 +1077,34 @@
     }
 
     .nav-menu__inner {
-        justify-content: space-between;
+        justify-content: start;
         padding: 20px
     }
 
     .nav-menu__nav {
         margin: 0px;
+        gap: 20px;
+        margin-top: 70px;
     }
 
-    .nav-menu__bottom {
-        margin-top: 0px;
+    .nav-menu__lang-btn {
+        font-size: 21px;
+        padding: 0;
     }
 
     .nav-menu__brand {
-        top: 55px;
+        bottom: 90px;
+        top: auto;
+    }
+
+    .nav-menu__close {
+        width: 16px;
+        height: 16px;
+        padding: 0;
+    }
+
+    .nav-menu__item-right {
+        flex-direction: row-reverse;
+        gap: 10px;
     }
 }
