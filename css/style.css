@@ -278,8 +278,8 @@ button {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 150% 75% at -8% 58%, rgba(255, 73, 17, 0.10) 0%, transparent 65%),
-    radial-gradient(ellipse 145% 88% at -3% 40%, rgba(255, 128, 17, 0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 150% 75% at -8% 58%, rgba(255, 73, 17, 0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 145% 88% at -3% 40%, rgba(255, 128, 17, 0.12) 0%, transparent 60%),
     radial-gradient(ellipse 108% 20% at 105% 100%, rgba(255, 128, 17, 0.00) 0%, transparent 65%);
   filter: blur(40px);
   pointer-events: none;
@@ -583,6 +583,9 @@ button {
   pointer-events: auto;
   transform: translateY(-50%);
 }
+/* Nudge the two side labels away from the sphere */
+.info-label[data-i="2"] { margin-right: 30px; } /* left label → 10px left */
+.info-label[data-i="1"] { margin-left: 30px; }  /* right label → 10px right */
 .info-label h3 {
   font-weight: 400;
   font-size: 28px;
@@ -606,17 +609,13 @@ button {
 }
 
 .team::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 90% 65% at 38% 58%, rgba(255, 128, 17, 0.15) 0%, transparent 65%),
-    radial-gradient(ellipse 60% 45% at 36% 55%, rgba(255, 73, 17, 0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 35% 25% at 38% 54%, rgba(255, 250, 246, 0.15) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 25% at 30% 0%, rgba(255, 73, 17, 0.07) 0%, transparent 65%);
-  filter: blur(50px);
-  pointer-events: none;
-  z-index: 0;
+content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 130% 65% at 70% 38%, rgba(255, 128, 17, 0.15) 0%, transparent 65%), radial-gradient(ellipse 60% 45% at 36% 55%, rgba(255, 73, 17, 0.10) 0%, transparent 60%), radial-gradient(ellipse 35% 25% at 38% 54%, rgba(255, 250, 246, 0.15) 0%, transparent 55%), radial-gradient(ellipse 70% 25% at 30% 0%, rgba(255, 73, 17, 0.07) 0%, transparent 65%);
+    filter: blur(50px);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .team::after {
@@ -1095,6 +1094,11 @@ button {
   color: #FF5300;
 }
 
+.footer__social:first-child svg {
+  margin-right: 1px;
+  
+}
+
 /* ===== Modal ===== */
 
 .modal-overlay {
@@ -1432,4 +1436,13 @@ button {
 .nav-menu__lang-btn--active,
 .nav-menu__lang-btn:hover {
   color: #fff;
+}
+
+/* seo */
+.seo {
+  padding: 100px 56px 0px;
+}
+
+.seo h2 {
+  margin-bottom: 30px;
 }

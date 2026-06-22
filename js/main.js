@@ -15,21 +15,22 @@ function closeNavMenu() {
   document.body.style.overflow = '';
 }
 
-burger.addEventListener('click', openNavMenu);
-navMenuClose.addEventListener('click', closeNavMenu);
-document.querySelectorAll('.nav-menu__item').forEach(link => {
-  link.addEventListener('click', closeNavMenu);
-});
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && navMenu.classList.contains('active')) closeNavMenu();
-});
+if (navMenu && burger && navMenuClose) {
+  burger.addEventListener('click', openNavMenu);
+  navMenuClose.addEventListener('click', closeNavMenu);
+  document.querySelectorAll('.nav-menu__item').forEach(link => {
+    link.addEventListener('click', closeNavMenu);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navMenu.classList.contains('active')) closeNavMenu();
+  });
+}
 
 // ========================================
 // Modal
 // ========================================
 const modalOverlay = document.getElementById('modal');
 const modalClose   = document.getElementById('modal-close');
-const triggers     = document.querySelectorAll('.hero__cta, .hero__contact-btn, .header__contact-btn, .work-card__btn');
 
 function openModal() {
   modalOverlay.classList.add('active');
@@ -40,45 +41,57 @@ function closeModal() {
   modalOverlay.classList.remove('active');
   document.body.style.overflow = '';
   setTimeout(() => {
-    document.getElementById('modal-body').classList.remove('hiding');
-    document.getElementById('modal-success').classList.remove('active');
+    const body    = document.getElementById('modal-body');
+    const success = document.getElementById('modal-success');
+    if (body)    body.classList.remove('hiding');
+    if (success) success.classList.remove('active');
   }, 300);
 }
 
-document.getElementById('modal-form').addEventListener('submit', e => {
-  e.preventDefault();
-  const body    = document.getElementById('modal-body');
-  const success = document.getElementById('modal-success');
-  body.classList.add('hiding');
-  setTimeout(() => success.classList.add('active'), 280);
-});
+if (modalOverlay) {
+  const triggers  = document.querySelectorAll('.hero__cta, .hero__contact-btn, .header__contact-btn, .work-card__btn');
+  const modalForm = document.getElementById('modal-form');
 
-triggers.forEach(btn => btn.addEventListener('click', openModal));
-modalClose.addEventListener('click', closeModal);
-modalOverlay.addEventListener('click', e => {
-  if (e.target === modalOverlay) closeModal();
-});
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
-});
+  if (modalForm) {
+    modalForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const body    = document.getElementById('modal-body');
+      const success = document.getElementById('modal-success');
+      if (body) body.classList.add('hiding');
+      setTimeout(() => { if (success) success.classList.add('active'); }, 280);
+    });
+  }
+
+  triggers.forEach(btn => btn.addEventListener('click', openModal));
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', e => {
+    if (e.target === modalOverlay) closeModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+}
 
 // ========================================
 // Lenis smooth scroll
 // ========================================
-const lenis = new Lenis({
-  duration: 1.2,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  smoothWheel: true,
-});
+let lenis = null;
+if (typeof Lenis !== 'undefined') {
+  lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
 
-function lenisRaf(time) {
-  lenis.raf(time);
+  const lenisRaf = (time) => {
+    lenis.raf(time);
+    requestAnimationFrame(lenisRaf);
+  };
   requestAnimationFrame(lenisRaf);
 }
-requestAnimationFrame(lenisRaf);
 
 // ========================================
-// Anchor scroll via Lenis
+// Anchor scroll (uses Lenis if present, else native)
 // ========================================
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
@@ -87,20 +100,26 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     const target = document.querySelector(hash);
     if (!target) return;
     e.preventDefault();
-    lenis.scrollTo(target, { duration: 1.4, offset: 0 });
+    if (lenis) {
+      lenis.scrollTo(target, { duration: 1.4, offset: 0 });
+    } else {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 });
 
 // ========================================
 // AOS init
 // ========================================
-AOS.init({
-  duration: 900,
-  once: true,
-  offset: 80,
-  easing: 'ease-out-cubic',
-});
-lenis.on('scroll', AOS.refresh);
+if (typeof AOS !== 'undefined') {
+  AOS.init({
+    duration: 900,
+    once: true,
+    offset: 80,
+    easing: 'ease-out-cubic',
+  });
+  if (lenis) lenis.on('scroll', AOS.refresh);
+}
 
 // svg what we do animation
 if (document.getElementById('scene')) {
@@ -128,6 +147,7 @@ if (document.getElementById('scene')) {
 
     BTN_DATA.forEach(({ i, cx, cy, side }) => {
       const label = document.querySelector(`.info-label[data-i="${i}"]`);
+      if (!label) return;
 
       const vx = rect.left + cx * scale;
       const vy = rect.top  + cy * scale;
@@ -279,7 +299,8 @@ if (document.getElementById('scene')) {
         return;
       }
 
-      const label     = document.querySelector(`.info-label[data-i="${btn.dataset.i}"]`);
+      const label = document.querySelector(`.info-label[data-i="${btn.dataset.i}"]`);
+      if (!label) return;
       const wasActive = label.classList.contains('active');
       allLabels.forEach(l => l.classList.remove('active'));
       allBtns.forEach(b => b.classList.remove('active'));
@@ -332,7 +353,8 @@ if (document.getElementById('scene')) {
 
 } // end scene guard
 
-//swiper
+// swiper
+if (typeof Swiper !== 'undefined' && document.querySelector('.team__swiper')) {
   new Swiper('.team__swiper', {
     slidesPerView: 3.5,
     spaceBetween: 34,
@@ -353,3 +375,4 @@ if (document.getElementById('scene')) {
       nextEl: '.team__arrow--next',
     },
   });
+}

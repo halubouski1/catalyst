@@ -104,6 +104,10 @@
         max-width: 257px;
     }
 
+    .work-card--text--third .work-card__desc {
+        max-width: 211px;
+    }
+
     .work-card__title {
         font-size: 22px;
         max-width: 280px;
@@ -260,6 +264,11 @@
     .cta__text {
         max-width: 519px;
         font-size: 16px;
+    }
+
+    .cta__btn svg {
+        width: 30px;
+        height: 30px;
     }
 
     .cta__btn {
@@ -552,6 +561,7 @@
     top: unset !important;
     bottom: unset !important;
     transform: none !important;
+    margin: 0 !important;
     max-width: 100%;
     text-align: left !important;
     height: 0;
@@ -988,10 +998,10 @@
 
     /* .footer */
     .footer {
-        padding: 10px 20px 35px;
-        background-image: url(../assets/img/footer-mobile.png);
-        background-position: center center;
-        background-size: 100% 100%;
+        padding: 10px 20px 500px;
+        background-image: url(../assets/img/footer-mobile-2.png);
+        background-position: center top 77%;
+        background-size: 354px 640px;
     }
     
     .footer__logo {
@@ -1127,5 +1137,10 @@
     .nav-menu__item-right {
         flex-direction: row-reverse;
         gap: 10px;
+    }
+
+    /* seo */
+    .seo {
+        padding: 100px 20px 40px;
     }
 }
