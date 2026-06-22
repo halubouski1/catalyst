@@ -890,7 +890,7 @@ content: '';
 .footer {
   padding: 30px 100px 65px;
   position: relative;
-  background: #0b0b0b url('../assets/img/footer.png') left -23px center / 100% auto no-repeat;
+  background: #000 url('../assets/img/footer.png') left -23px center / 100% auto no-repeat;
 }
 
 .footer__upper {
@@ -1436,13 +1436,4 @@ content: '';
 .nav-menu__lang-btn--active,
 .nav-menu__lang-btn:hover {
   color: #fff;
-}
-
-/* seo */
-.seo {
-  padding: 100px 56px 0px;
-}
-
-.seo h2 {
-  margin-bottom: 30px;
 }
