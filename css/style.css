@@ -754,6 +754,109 @@ content: '';
   text-align: right;
 }
 
+/* Team profile modal */
+
+.team-profile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.68);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.team-profile-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.team-profile-modal {
+  background: rgba(255, 255, 255, 0.05);
+  position: relative;
+  width: 100%;
+  max-width: 884px;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  padding: 80px 80px 80px 60px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(96px);
+  -webkit-backdrop-filter: blur(96px);
+  transform: translateY(18px);
+  transition: transform 0.3s ease;
+}
+
+.team-profile-modal[hidden] {
+  display: none;
+}
+
+.team-profile-overlay.active .team-profile-modal:not([hidden]) {
+  transform: translateY(0);
+}
+
+.team-profile-modal__close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  z-index: 2;
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.team-profile-modal__close:hover,
+.team-profile-modal__close:focus-visible {
+  opacity: 1;
+}
+
+.team-profile-modal__close svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.team-profile-modal__role {
+  display: block;
+  margin-bottom: 30px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 144%;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.team-profile-modal__name {
+  display: block;
+  margin-bottom: 30px;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 89%;
+  color: #fff;
+}
+
+.team-profile-modal__text {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  max-width: 744px;
+}
+
+.team-profile-modal__text p {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  color: rgba(255, 255, 255, 0.55);
+}
+
 /* ===== CTA ===== */
 
 .cta {

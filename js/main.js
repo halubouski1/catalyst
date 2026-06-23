@@ -73,6 +73,70 @@ if (modalOverlay) {
 }
 
 // ========================================
+// Team profile modal
+// ========================================
+const teamProfileOverlay = document.getElementById('team-profile-modal');
+
+if (teamProfileOverlay) {
+  const profileTriggers = document.querySelectorAll('.team-card__profile-btn[data-profile]');
+  const profilePanels   = [...teamProfileOverlay.querySelectorAll('[data-profile-modal]')];
+  let activeProfileTrigger = null;
+  let profileCloseTimer = null;
+
+  function openTeamProfile(profileId, trigger) {
+    const targetPanel = profilePanels.find(panel => panel.dataset.profileModal === profileId);
+    if (!targetPanel) return;
+
+    window.clearTimeout(profileCloseTimer);
+    activeProfileTrigger = trigger;
+    profilePanels.forEach(panel => {
+      panel.hidden = panel !== targetPanel;
+    });
+    teamProfileOverlay.classList.add('active');
+    teamProfileOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    const closeButton = targetPanel.querySelector('.team-profile-modal__close');
+    if (closeButton) closeButton.focus({ preventScroll: true });
+  }
+
+  function closeTeamProfile() {
+    if (!teamProfileOverlay.classList.contains('active')) return;
+
+    teamProfileOverlay.classList.remove('active');
+    teamProfileOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+
+    const triggerToFocus = activeProfileTrigger;
+    activeProfileTrigger = null;
+    if (triggerToFocus) triggerToFocus.focus({ preventScroll: true });
+
+    profileCloseTimer = window.setTimeout(() => {
+      profilePanels.forEach(panel => {
+        panel.hidden = true;
+      });
+    }, 300);
+  }
+
+  profileTriggers.forEach(button => {
+    button.addEventListener('click', () => openTeamProfile(button.dataset.profile, button));
+  });
+
+  profilePanels.forEach(panel => {
+    const closeButton = panel.querySelector('.team-profile-modal__close');
+    if (closeButton) closeButton.addEventListener('click', closeTeamProfile);
+  });
+
+  teamProfileOverlay.addEventListener('click', e => {
+    if (e.target === teamProfileOverlay) closeTeamProfile();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeTeamProfile();
+  });
+}
+
+// ========================================
 // Lenis smooth scroll
 // ========================================
 let lenis = null;

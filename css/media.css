@@ -386,6 +386,45 @@
         margin-top: 20px;
     }
 
+    /* team profile modal */
+
+.team-profile-modal {
+    padding: 50px 50px 50px 50px;
+    max-width: 670px;
+}
+
+.team-profile-modal__close {
+  top: 20px;
+  right: 20px;
+}
+
+.team-profile-modal__close svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.team-profile-modal__role {
+  margin-bottom: 18px;
+  font-size: 13px;
+}
+
+.team-profile-modal__name {
+  margin-bottom: 18px;
+  font-size: 21px;
+}
+
+.team-profile-modal__text {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  max-width: 522px;
+}
+
+.team-profile-modal__text p {
+  font-size: 14px;
+}
+
     /* ========================================
     Nav Menu
     ======================================== */
@@ -594,10 +633,34 @@
   .team-card__profile-btn {
     bottom: 20px;
     left: 20px;
+    opacity: 1;
+    transform: none;
   }
 
   .team::before {
     display: none;
+  }
+
+  .team-profile-overlay {
+    padding: 20px;
+  }
+
+  .team-profile-modal {
+    max-height: calc(100vh - 40px);
+    padding: 70px 45px 55px 35px;
+  }
+
+  .team-profile-modal__close {
+    top: 24px;
+    right: 24px;
+  }
+
+  .team-profile-modal__role {
+    font-size: 14px;
+  }
+
+  .team-profile-modal__text p {
+    font-size: 16px;
   }
 
   /* cta */
@@ -956,6 +1019,39 @@
         line-height: 125%;
     }
 
+    .team-profile-overlay {
+        padding: 15px;
+    }
+
+    .team-profile-modal {
+        max-height: calc(100vh - 30px);
+        padding: 64px 24px 34px 22px;
+    }
+
+    .team-profile-modal__close {
+        top: 22px;
+        right: 22px;
+    }
+
+    .team-profile-modal__role {
+        margin-bottom: 22px;
+        font-size: 13px;
+    }
+
+    .team-profile-modal__name {
+        margin-bottom: 22px;
+        font-size: 23px;
+    }
+
+    .team-profile-modal__text {
+        gap: 18px;
+    }
+
+    .team-profile-modal__text p {
+        font-size: 14px;
+        line-height: 130%;
+    }
+
     /* cta */
     .cta__inner {
         padding: 150px 20px 140px 0;
@@ -1101,6 +1197,45 @@
     .modal__success-text {
         font-size: 23px;
     }
+
+        /* team profile modal */
+
+.team-profile-modal {
+    padding: 30px 30px 30px 20px;
+    max-width: 670px;
+}
+
+.team-profile-modal__close {
+  top: 15px;
+  right: 15px;
+}
+
+.team-profile-modal__close svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.team-profile-modal__role {
+  margin-bottom: 18px;
+  font-size: 13px;
+}
+
+.team-profile-modal__name {
+  margin-bottom: 18px;
+  font-size: 18px;
+}
+
+.team-profile-modal__text {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 522px;
+}
+
+.team-profile-modal__text p {
+  font-size: 12px;
+}
 
     /* menu */
     .nav-menu__item-text {

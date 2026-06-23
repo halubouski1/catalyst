@@ -34,7 +34,7 @@
 
 <section class="hero" id="hero">
   <video class="hero__video" autoplay muted loop playsinline>
-    <source src="assets/vid/hero-mobile.mp4" media="(max-width: 570px)">
+    <source src="assets/vid/hero-mob.mp4" media="(max-width: 570px)">
     <source src="assets/vid/hero.mp4">
   </video>
 
@@ -310,12 +310,12 @@
       <div class="swiper-slide team-card">
         <div class="team-card__img-wrap">
           <img class="team-card__img" src="assets/img/team-card-1.jpg" alt="Ekaterina Ponka">
-          <a class="team-card__profile-btn" href="#">
+          <button class="team-card__profile-btn" type="button" data-profile="team-profile-1" aria-haspopup="dialog" aria-controls="team-profile-modal">
             View profile
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M10.0055 3.40871L1.41181 12.0024L0 10.5906L8.59265 1.9969H1.01942V0H12.0024V10.9829H10.0055V3.40871Z" fill="white" />
             </svg>
-          </a>
+          </button>
         </div>
         <div class="team-card__info">
           <span class="team-card__name">Ekaterina<br>Ponka</span>
@@ -326,12 +326,12 @@
       <div class="swiper-slide team-card">
         <div class="team-card__img-wrap">
           <img class="team-card__img" src="assets/img/team-card-2.jpg" alt="Ekaterina Ponka">
-          <a class="team-card__profile-btn" href="#">
+          <button class="team-card__profile-btn" type="button" data-profile="team-profile-2" aria-haspopup="dialog" aria-controls="team-profile-modal">
             View profile
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M10.0055 3.40871L1.41181 12.0024L0 10.5906L8.59265 1.9969H1.01942V0H12.0024V10.9829H10.0055V3.40871Z" fill="white" />
             </svg>
-          </a>
+          </button>
         </div>
         <div class="team-card__info">
           <span class="team-card__name">Ekaterina<br>Ponka</span>
@@ -342,12 +342,12 @@
       <div class="swiper-slide team-card">
         <div class="team-card__img-wrap">
           <img class="team-card__img" src="assets/img/team-card-3.jpg" alt="Ekaterina Ponka">
-          <a class="team-card__profile-btn" href="#">
+          <button class="team-card__profile-btn" type="button" data-profile="team-profile-3" aria-haspopup="dialog" aria-controls="team-profile-modal">
             View profile
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M10.0055 3.40871L1.41181 12.0024L0 10.5906L8.59265 1.9969H1.01942V0H12.0024V10.9829H10.0055V3.40871Z" fill="white" />
             </svg>
-          </a>
+          </button>
         </div>
         <div class="team-card__info">
           <span class="team-card__name">Ekaterina<br>Ponka</span>
@@ -358,12 +358,12 @@
       <div class="swiper-slide team-card">
         <div class="team-card__img-wrap">
           <img class="team-card__img" src="assets/img/team-card-4.jpg" alt="Ekaterina Ponka">
-          <a class="team-card__profile-btn" href="#">
+          <button class="team-card__profile-btn" type="button" data-profile="team-profile-4" aria-haspopup="dialog" aria-controls="team-profile-modal">
             View profile
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M10.0055 3.40871L1.41181 12.0024L0 10.5906L8.59265 1.9969H1.01942V0H12.0024V10.9829H10.0055V3.40871Z" fill="white" />
             </svg>
-          </a>
+          </button>
         </div>
         <div class="team-card__info">
           <span class="team-card__name">Ekaterina<br>Ponka</span>
@@ -567,6 +567,73 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- Team Profile Modal -->
+<div class="team-profile-overlay" id="team-profile-modal" aria-hidden="true">
+  <div class="team-profile-modal" data-profile-modal="team-profile-1" role="dialog" aria-modal="true" aria-labelledby="team-profile-1-name" hidden>
+    <button class="team-profile-modal__close" type="button" aria-label="Close profile">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.26013 15C0.937327 15 0.614525 14.8775 0.369269 14.6304C-0.12309 14.1381 -0.12309 13.3399 0.369269 12.8475L12.8475 0.369261C13.3401 -0.123087 14.1384 -0.123087 14.6307 0.369261C15.1231 0.861609 15.1231 1.65983 14.6307 2.15248L2.15222 14.6304C1.90358 14.8775 1.58109 15 1.26013 15Z" fill="white" />
+        <path d="M13.7381 15C13.4156 15 13.0928 14.8775 12.8476 14.6304L0.369496 2.15264C-0.123165 1.66024 -0.123165 0.861933 0.369496 0.369532C0.861849 -0.123177 1.66008 -0.123177 2.15243 0.369532L14.6305 12.8488C15.1232 13.3412 15.1232 14.1395 14.6305 14.6319C14.3837 14.8775 14.0609 15 13.7381 15Z" fill="white" />
+      </svg>
+    </button>
+    <span class="team-profile-modal__role">Partner, Head of Corporate Division</span>
+    <span class="team-profile-modal__name" id="team-profile-1-name">Ekaterina Ponka</span>
+    <div class="team-profile-modal__text">
+      <p>Over 19 years of legal experience in international law, corporate structures, compliance, and transactional support. Her professional background includes work with international law firms and ultra-high-net-worth families. She builds and supports complex international structures - from trusts and foundations to holding companies and underlying asset-holding structures.</p>
+      <p>Specialisation: international corporate structures and their protection, sanctions law and compliance, legal architecture of private capital, legal risk management, legal support for assets (real estate, yachts, art), comprehensive KYC support.</p>
+      <p>Her approach is geared towards strategic decisions and creating a legal architecture that ensures security, stability, and protection of client assets in the current environment.</p>
+    </div>
+  </div>
+
+  <div class="team-profile-modal" data-profile-modal="team-profile-2" role="dialog" aria-modal="true" aria-labelledby="team-profile-2-name" hidden>
+    <button class="team-profile-modal__close" type="button" aria-label="Close profile">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.26013 15C0.937327 15 0.614525 14.8775 0.369269 14.6304C-0.12309 14.1381 -0.12309 13.3399 0.369269 12.8475L12.8475 0.369261C13.3401 -0.123087 14.1384 -0.123087 14.6307 0.369261C15.1231 0.861609 15.1231 1.65983 14.6307 2.15248L2.15222 14.6304C1.90358 14.8775 1.58109 15 1.26013 15Z" fill="white" />
+        <path d="M13.7381 15C13.4156 15 13.0928 14.8775 12.8476 14.6304L0.369496 2.15264C-0.123165 1.66024 -0.123165 0.861933 0.369496 0.369532C0.861849 -0.123177 1.66008 -0.123177 2.15243 0.369532L14.6305 12.8488C15.1232 13.3412 15.1232 14.1395 14.6305 14.6319C14.3837 14.8775 14.0609 15 13.7381 15Z" fill="white" />
+      </svg>
+    </button>
+    <span class="team-profile-modal__role">Partner, Head of Corporate Division</span>
+    <span class="team-profile-modal__name" id="team-profile-2-name">Ekaterina Ponka</span>
+    <div class="team-profile-modal__text">
+      <p>Over 19 years of legal experience in international law, corporate structures, compliance, and transactional support. Her professional background includes work with international law firms and ultra-high-net-worth families. She builds and supports complex international structures - from trusts and foundations to holding companies and underlying asset-holding structures.</p>
+      <p>Specialisation: international corporate structures and their protection, sanctions law and compliance, legal architecture of private capital, legal risk management, legal support for assets (real estate, yachts, art), comprehensive KYC support.</p>
+      <p>Her approach is geared towards strategic decisions and creating a legal architecture that ensures security, stability, and protection of client assets in the current environment.</p>
+    </div>
+  </div>
+
+  <div class="team-profile-modal" data-profile-modal="team-profile-3" role="dialog" aria-modal="true" aria-labelledby="team-profile-3-name" hidden>
+    <button class="team-profile-modal__close" type="button" aria-label="Close profile">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.26013 15C0.937327 15 0.614525 14.8775 0.369269 14.6304C-0.12309 14.1381 -0.12309 13.3399 0.369269 12.8475L12.8475 0.369261C13.3401 -0.123087 14.1384 -0.123087 14.6307 0.369261C15.1231 0.861609 15.1231 1.65983 14.6307 2.15248L2.15222 14.6304C1.90358 14.8775 1.58109 15 1.26013 15Z" fill="white" />
+        <path d="M13.7381 15C13.4156 15 13.0928 14.8775 12.8476 14.6304L0.369496 2.15264C-0.123165 1.66024 -0.123165 0.861933 0.369496 0.369532C0.861849 -0.123177 1.66008 -0.123177 2.15243 0.369532L14.6305 12.8488C15.1232 13.3412 15.1232 14.1395 14.6305 14.6319C14.3837 14.8775 14.0609 15 13.7381 15Z" fill="white" />
+      </svg>
+    </button>
+    <span class="team-profile-modal__role">Partner, Head of Corporate Division</span>
+    <span class="team-profile-modal__name" id="team-profile-3-name">Ekaterina Ponka</span>
+    <div class="team-profile-modal__text">
+      <p>Over 19 years of legal experience in international law, corporate structures, compliance, and transactional support. Her professional background includes work with international law firms and ultra-high-net-worth families. She builds and supports complex international structures - from trusts and foundations to holding companies and underlying asset-holding structures.</p>
+      <p>Specialisation: international corporate structures and their protection, sanctions law and compliance, legal architecture of private capital, legal risk management, legal support for assets (real estate, yachts, art), comprehensive KYC support.</p>
+      <p>Her approach is geared towards strategic decisions and creating a legal architecture that ensures security, stability, and protection of client assets in the current environment.</p>
+    </div>
+  </div>
+
+  <div class="team-profile-modal" data-profile-modal="team-profile-4" role="dialog" aria-modal="true" aria-labelledby="team-profile-4-name" hidden>
+    <button class="team-profile-modal__close" type="button" aria-label="Close profile">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.26013 15C0.937327 15 0.614525 14.8775 0.369269 14.6304C-0.12309 14.1381 -0.12309 13.3399 0.369269 12.8475L12.8475 0.369261C13.3401 -0.123087 14.1384 -0.123087 14.6307 0.369261C15.1231 0.861609 15.1231 1.65983 14.6307 2.15248L2.15222 14.6304C1.90358 14.8775 1.58109 15 1.26013 15Z" fill="white" />
+        <path d="M13.7381 15C13.4156 15 13.0928 14.8775 12.8476 14.6304L0.369496 2.15264C-0.123165 1.66024 -0.123165 0.861933 0.369496 0.369532C0.861849 -0.123177 1.66008 -0.123177 2.15243 0.369532L14.6305 12.8488C15.1232 13.3412 15.1232 14.1395 14.6305 14.6319C14.3837 14.8775 14.0609 15 13.7381 15Z" fill="white" />
+      </svg>
+    </button>
+    <span class="team-profile-modal__role">Partner, Head of Corporate Division</span>
+    <span class="team-profile-modal__name" id="team-profile-4-name">Ekaterina Ponka</span>
+    <div class="team-profile-modal__text">
+      <p>Over 19 years of legal experience in international law, corporate structures, compliance, and transactional support. Her professional background includes work with international law firms and ultra-high-net-worth families. She builds and supports complex international structures - from trusts and foundations to holding companies and underlying asset-holding structures.</p>
+      <p>Specialisation: international corporate structures and their protection, sanctions law and compliance, legal architecture of private capital, legal risk management, legal support for assets (real estate, yachts, art), comprehensive KYC support.</p>
+      <p>Her approach is geared towards strategic decisions and creating a legal architecture that ensures security, stability, and protection of client assets in the current environment.</p>
+    </div>
   </div>
 </div>
 
