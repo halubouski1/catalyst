@@ -401,7 +401,11 @@ button {
 }
 
 .work-card--text--second .work-card__desc {
-  max-width: 314px;
+  max-width: 413px;
+}
+
+.work-card--text--second .work-card__title {
+  max-width: 400px;
 }
 
 .work-card--text--third .work-card__desc {
@@ -431,10 +435,6 @@ button {
   font-weight: 400;
   font-size: 16px;
   line-height: 144%;
-  color: #fff;
-}
-
-.work-card__info-accent {
   color: #FF5300;
 }
 
@@ -584,8 +584,8 @@ button {
   transform: translateY(-50%);
 }
 /* Nudge the two side labels away from the sphere */
-.info-label[data-i="2"] { margin-right: 30px; } /* left label → 10px left */
-.info-label[data-i="1"] { margin-left: 30px; }  /* right label → 10px right */
+.info-label[data-i="2"] { margin-left: 20px; } /* left label → 10px left */
+.info-label[data-i="1"] { margin-right: 20px; }  /* right label → 10px right */
 .info-label h3 {
   font-weight: 400;
   font-size: 28px;

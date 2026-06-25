@@ -101,7 +101,7 @@
     }
 
     .work-card--text--second .work-card__desc {
-        max-width: 257px;
+        max-width: 335px;
     }
 
     .work-card--text--third .work-card__desc {
@@ -111,6 +111,10 @@
     .work-card__title {
         font-size: 22px;
         max-width: 280px;
+    }
+
+    .work-card--text--second .work-card__title {
+        max-width: 306px;
     }
 
     .work-card--text--first .work-card__title {
@@ -277,7 +281,7 @@
     }
 
     .footer {
-        padding: 25px 70px 35px;
+        padding: 25px 70px 15px;
     }
 
     .footer__logo {
@@ -925,7 +929,7 @@
     }
 
     .work-card--text--second .work-card__desc {
-        max-width: 231px;
+        max-width: 267px;
     }
 
     .work-card--plain, .work-card--bottom-text {
@@ -1116,6 +1120,12 @@
     .footer__social {
         width: 38px;
         height: 38px;
+    }
+
+    .footer__brand-text {
+        max-width: 207px;
+        text-align: center;
+        line-height: 1.2;
     }
 
     .footer__social svg {
