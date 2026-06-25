@@ -438,5 +438,10 @@ if (typeof Swiper !== 'undefined' && document.querySelector('.team__swiper')) {
       prevEl: '.team__arrow--prev',
       nextEl: '.team__arrow--next',
     },
+    a11y: {
+      // Keep accessibility, but don't let the slider auto-scroll to a slide
+      // when a card button regains focus (e.g. after closing a team popup).
+      scrollOnFocus: false,
+    },
   });
 }
