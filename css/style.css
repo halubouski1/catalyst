@@ -122,6 +122,7 @@ button {
   font-size: 14px;
   color: #fff;
   position: relative;
+  text-transform: uppercase;
 }
 
 .hero__nav-link::after {
